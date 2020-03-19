@@ -4,22 +4,28 @@ import  base from '../pages/structure/base/base.vue'
 import  battery from '../pages/structure/battery/battery.vue'
 import  infantry from '../pages/infantry/infantry.vue'
 import  rockettroops from '../pages/infantry/rockettroops/rockettroops.vue'
+import  caneltroops from '../pages/infantry/caneltroops/caneltroops.vue'
 export default  [{
 	path:'/structure',
 	component:container,
+	name:'建筑类',
 	meta:{
-		name:'建筑类'
+		bread:'建筑类'
 	},
 	children:[{
-		path:'/base',
+		path:'base',
+		name:'基地',
 		meta:{
-		name:'基地'
+		
+		bread:'建筑类-基地'
 	},
 		component:base
 	},{
-		path:'/battery',
+		path:'battery',
+		name:'发电厂',
 		meta:{
-		name:'发电厂'
+		
+		bread:'建筑类-发电厂'
 	},
 		component:battery
 	}]
@@ -27,21 +33,26 @@ export default  [{
 	
 	path:'/infantry',
 	component:container,
+	name:'步兵类',
 	meta:{
-		name:'建筑类'
+		bread:'步兵类'
 	},
 	children:[{
-		path:'/base',
+		path:'rockettrop',
+		name:'火箭军',
 		meta:{
-		name:'基地'
+		
+			bread:'步兵类-火箭军'
 	},
-		component:base
+		component:rockettroops
 	},{
-		path:'/battery',
+		path:'caneltrop',
+		name:'炮兵',
 		meta:{
-		name:'发电厂'
+		
+		bread:'步兵类-炮兵'
 	},
-		component:battery
+		component:caneltroops
 	}]
 
 }]

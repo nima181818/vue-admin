@@ -16,12 +16,13 @@ export default{
 				account:this.account
 			}
 			api.apigoLogin(param).then((res)=>{
+				console.log(this.$router)
 				this.$store.commit('setLoginstate',true);
 				localStorage.setItem('token',res.token);
 				this.$store.commit('setRole',res.role);
 				this.$router.addRoutes(supermanage);
-				this.$router.push({
-					path:'/structure'
+				this.$router.replace({
+					path:'/structure/base'
 				})
 			}).catch(e=>{
 				console.log(e)
