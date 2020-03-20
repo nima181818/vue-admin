@@ -36,6 +36,7 @@
 				</el-container>
 			</el-container>
 		</el-container>
+		
 	</div>
 </template>
 
@@ -58,21 +59,27 @@
 			this.handleBread();
 		}
 	},
-	created(){
-
+	beforeCreated(){
+		
 	},
+	
 	mounted(){
-		this.routelist =globalfunction.routeStructure;
-		console.log(JSON.stringify(this.routelist))	
+		setTimeout(()=>{
+				this.routelist =globalfunction.routeStructure;
+	
 		this.handleBread();
+		},100)
+	
 	},
+	
 	methods: {
+	
       handleBread(){
       	 let path = this.$route.meta.bread;
       	 try{
       	 	path = path.split('-');
       	     this.breadlist = path;
-      	     console.log( this.breadlist)
+      	   
       	 }catch(e){
       	 	console.log('path is not structured');
       	 }
@@ -82,7 +89,7 @@
       	localStorage.removeItem('token');
       	this.$store.commit('setLoginstate',false);
       	setTimeout(()=>{
-      			this.$router.replace('/login');
+      			this.$router.push('/login');
       	})
       
       }
