@@ -8,31 +8,22 @@ import 'element-ui/lib/theme-chalk/index.css'
 import store from './store/index.js';
 import supermanage from '@/router/supermanager.js';
 import globalfunction from '@/utils/golobaldata.js'
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 /* eslint-disable no-new */
 Vue.prototype.$store = store;
-//router.beforeEach((to,from,next)=>{
-//	console.log('从'+from.path+'到'+to.path)
-//	  if(from.path!='/'){
-//	  	
-//	  	if(store.state.haslogin){
-//	  	console.log(1)
-//	  	
-//	  	   next(); 
-//	  	   
-//	  	}
-//	  	 
-//	  }else{
-//	  	 next(); 
-//	  }
-//
-//
-//})
+
 //注意 supermanage定义为当前用户组的动态路由
 Vue.mixin({
+	data(){
+		return{
+			routelist:[]
+		}
+	},
 	mounted(){
 		globalfunction.getDynamicroutestructure(supermanage);
+		this.routelist =globalfunction.routeStructure;
 	}
 })
 new Vue({

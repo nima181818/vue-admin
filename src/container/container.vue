@@ -13,7 +13,7 @@
                           <template slot="title"><i class="el-icon-message"></i>{{item.name}}</template>
                          <template>
                            <el-menu-item-group v-for="(childitem,childindex) in item.children">
-                               <el-menu-item :style="{color:$route.path==(item.path+'/'+childitem.path)?'rgb(64,158,255)':'#191919'}" ref="elmenus" :index="(item.path+'/'+childitem.path)">{{childitem.name}}</el-menu-item>
+                               <el-menu-item :style="{color:$route.path.indexOf(item.path+'/'+childitem.path)!=-1?'rgb(64,158,255)':'#191919'}" ref="elmenus" :index="(item.path+'/'+childitem.path)">{{childitem.name}}</el-menu-item>
                                
                            </el-menu-item-group>
                           </template>
@@ -46,7 +46,7 @@
 	export default {
 	data() {
 		return {
-             routelist:[],
+           
              breadlist:[],
 		}
 	},
@@ -65,7 +65,7 @@
 	
 	mounted(){
 		setTimeout(()=>{
-				this.routelist =globalfunction.routeStructure;
+				
 	
 		this.handleBread();
 		},100)

@@ -5,6 +5,8 @@ import  battery from '../pages/structure/battery/battery.vue'
 import  infantry from '../pages/infantry/infantry.vue'
 import  rockettroops from '../pages/infantry/rockettroops/rockettroops.vue'
 import  caneltroops from '../pages/infantry/caneltroops/caneltroops.vue'
+import armconfig from '../pages/infantry/rockettroops/armconfig/armconfig.vue'
+import lifeconfig from '../pages/infantry/rockettroops/lifeconfig/lifeconfig.vue'
 export default  [{
 	path:'/structure',
 	component:container,
@@ -34,6 +36,7 @@ export default  [{
 	path:'/infantry',
 	component:container,
 	name:'步兵类',
+	redirect:'infantry/rockettrop',
 	meta:{
 		bread:'步兵类'
 	},
@@ -44,7 +47,26 @@ export default  [{
 		
 			bread:'步兵类-火箭军'
 	},
-		component:rockettroops
+		component:rockettroops,
+		redirect:'rockettrop/armconfig',
+		children:[{
+			path:'armconfig',
+		name:'武器配置',
+		meta:{
+		
+			bread:'步兵类-火箭军-武器配置'
+	},
+			component:armconfig
+		},{
+			
+			path:'lifeconfig',
+		name:'生命配置',
+		meta:{
+		
+			bread:'步兵类-火箭军-生命配置'
+	},
+			component:lifeconfig
+		}]
 	},{
 		path:'caneltrop',
 		name:'炮兵',
